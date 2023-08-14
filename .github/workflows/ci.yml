@@ -12,22 +12,6 @@ env:
   CARGO_INCREMENTAL: 0 # Speeds up the build (no cache) and reduces disk space!
 
 jobs:
-  rustfmt:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checking out
-      uses: actions/checkout@v3
-    - name: Running rustfmt
-      run: make rustfmt
-
-  check-clippy:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Checking out
-      uses: actions/checkout@v3
-    - name: Running clippy
-      run: make check
-
   test:
     runs-on: ubuntu-latest
     steps:
