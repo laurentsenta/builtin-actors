@@ -33,6 +33,14 @@ jobs:
     steps:
     - name: Checking out
       uses: actions/checkout@v3
+    - name: Setting up cache
+      uses: pl-strflt/rust-sccache-action@v1
+      env:
+        SCCACHE_CACHE_SIZE: 2G
+        SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
+    - name: show cache
+      run: |
+        echo $(ls ${{ github.workspace }}/.cache/sccache)
     - name: Running tests
       run: |
         cargo test --locked --all --no-fail-fast --exclude=fil_builtin_actors_bundle
