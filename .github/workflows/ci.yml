@@ -20,7 +20,7 @@ jobs:
     - name: Setting up cache
       uses: pl-strflt/rust-sccache-action@v1
       env:
-        SCCACHE_CACHE_SIZE: 2G
+        SCCACHE_CACHE_SIZE: 6G
         SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
     - name: show cache
       run: |
