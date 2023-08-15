@@ -24,9 +24,11 @@ jobs:
         SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
     - name: show cache
       run: |
+        echo ${RUSTC_WRAPPER}
         echo $(ls ${{ github.workspace }}/.cache/sccache)
     - name: Running tests
       run: |
+        export RUSTC_WRAPPER=sccache
         cargo test --locked --all --no-fail-fast --exclude=fil_builtin_actors_bundle
 
   build:
