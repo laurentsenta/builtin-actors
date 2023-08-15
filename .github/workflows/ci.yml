@@ -10,6 +10,8 @@ on:
 env:
   RUSTFLAGS: -Dwarnings
   CARGO_INCREMENTAL: 0 # Speeds up the build (no cache) and reduces disk space!
+  SCCACHE_CACHE_SIZE: 6G
+  SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
 
 jobs:
   test:
