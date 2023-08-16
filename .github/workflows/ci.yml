@@ -38,6 +38,7 @@ jobs:
     - name: Running tests
       run: |
         export RUSTC_WRAPPER=sccache
+        echo PWD=${PWD}
         cargo test --locked --all --no-fail-fast --exclude=fil_builtin_actors_bundle
     - name: Show statistics
       run: |
