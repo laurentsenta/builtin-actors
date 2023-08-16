@@ -42,7 +42,10 @@ jobs:
         cargo test --locked --all --no-fail-fast --exclude=fil_builtin_actors_bundle
     - name: Show statistics
       run: |
-        sccache --show-stats
-    - name: Set summary
+        sccache --show-stats | tee $GITHUB_STEP_SUMMARY
+    - uses: actions/upload-artifact@v3
       if: (failure() || success())
-      run: cat /tmp/sccache_log.txt >> $GITHUB_STEP_SUMMARY        
+      with:
+        name: sccache_log.txt
+        path: /tmp/sccache_log.txt
+
