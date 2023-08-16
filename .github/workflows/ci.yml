@@ -16,7 +16,7 @@ env:
   SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
   SCCACHE_ERROR_LOG: /tmp/sccache_log.txt
   SCCACHE_LOG: debug
-  CARGO_INCREMENTAL: false # https://github.com/mozilla/sccache#rust
+  CARGO_INCREMENTAL: 0 # https://github.com/mozilla/sccache#rust
 
 jobs:
   test:
