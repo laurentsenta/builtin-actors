@@ -14,6 +14,9 @@ env:
   CARGO_INCREMENTAL: 0 # Speeds up the build (no cache) and reduces disk space!
   SCCACHE_CACHE_SIZE: 6G
   SCCACHE_DIR: ${{ github.workspace }}/.cache/sccache
+  SCCACHE_ERROR_LOG: /tmp/sccache_log.txt
+  SCCACHE_LOG: debug
+  CARGO_INCREMENTAL: false # https://github.com/mozilla/sccache#rust
 
 jobs:
   test:
@@ -39,3 +42,6 @@ jobs:
     - name: Show statistics
       run: |
         sccache --show-stats
+    - name: Set summary
+      if: (failure() || success())
+      run: cat /tmp/sccache_log.txt >> $GITHUB_STEP_SUMMARY        
