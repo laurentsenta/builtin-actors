@@ -30,6 +30,9 @@ jobs:
     - name: show dir 2
       run: |
         echo ${PWD}
+    - name: show dir 3
+      run: |
+        echo "PWD=${PWD}"
     - name: Setting up cache
       uses: pl-strflt/rust-sccache-action@v1
       env:
