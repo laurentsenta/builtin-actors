@@ -24,6 +24,12 @@ jobs:
     steps:
     - name: Checking out
       uses: actions/checkout@v3
+    - name: show dir
+      run: |
+        pwd
+    - name: show dir 2
+      run: |
+        echo ${PWD}
     - name: Setting up cache
       uses: pl-strflt/rust-sccache-action@v1
       env:
